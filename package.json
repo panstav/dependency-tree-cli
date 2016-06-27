@@ -1,0 +1,29 @@
+{
+  "name": "@panstav/dependency-tree-cli",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panstav/dependency-tree-cli.git"
+  },
+  "bin": {
+    "npm-tree": "cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/panstav/dependency-tree-cli/issues"
+  },
+  "homepage": "https://github.com/panstav/dependency-tree-cli#readme",
+  "dependencies": {
+    "@panstav/dependency-tree": "0.0.1",
+    "ora": "0.2.3",
+    "topiary": "1.1.2",
+    "yargs": "4.7.1"
+  }
+}
