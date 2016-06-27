@@ -2,6 +2,8 @@
 
 const topiary = require('topiary');
 const ora = require('ora');
+const Time = require('time-diff');
+const timer = new Time();
 
 const getTree = require('@panstav/dependency-tree');
 
@@ -13,6 +15,11 @@ const argv = require('yargs')
 		describe: 'Choose the package semver',
 		default: 'latest'
 	})
+	.option('time', {
+		describe: 'Time the query',
+		default: false
+	})
+	.boolean('time')
 	.help('h')
 	.alias('h', 'help')
 	.argv;
@@ -20,6 +27,8 @@ const argv = require('yargs')
 // a call would stop by now if it didn't supply the correct syntax
 // start loader spinning
 const loader = ora({ spinner: 'dots7', text: 'Loading dependency tree' }).start();
+
+if (argv.timer) timer.start();
 
 // query for tree with given/default options and print results/errors
 getTree({ name: argv._[0], version: argv.version })
@@ -33,6 +42,8 @@ function print(tree){
 
 	// print the tree of dependencies
 	console.log(topiary(tree, 'deps', { name: renamer }));
+
+	if (argv.timer) console.log('Entire query', timer.end());
 
 	// rename each item in tree to a detailed inline
 	function renamer(pkg){

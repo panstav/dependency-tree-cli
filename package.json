@@ -23,6 +23,7 @@
   "dependencies": {
     "@panstav/dependency-tree": "0.0.1",
     "ora": "0.2.3",
+    "time-diff": "0.3.1",
     "topiary": "1.1.2",
     "yargs": "4.7.1"
   }
