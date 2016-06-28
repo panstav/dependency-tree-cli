@@ -15,7 +15,8 @@ const argv = require('yargs')
 		describe: 'Choose the package semver',
 		default: 'latest'
 	})
-	.option('time', {
+	.option('timer', {
+		alias: 't',
 		describe: 'Time the query',
 		default: false,
 		type: 'boolean'
