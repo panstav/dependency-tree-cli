@@ -62,13 +62,19 @@ function print(tree){
 	// stop the spinner and remove it
 	loader.stop().clear();
 
+	// take out stats, log them seperately
+	const stats = tree.stats;
+	delete tree.stats;
+
 	// print the tree of dependencies
 	if (!argv.dry){
 		const output = argv.json ? util.inspect(tree, false, null) : topiary(tree, 'deps', { name: renamer });
-		console.log(output);
+		console.log(output, '\n');
 	}
-	
-	if (argv.timer) console.log('Entire query', timer.end());
+
+	if (argv.timer) console.log(`Time to resolve ${timer.end()}`);
+	console.log(`# of unique dependencies: ${stats.uniquePackages}`);
+	console.log(`# of requests: ${stats.requestsOverNetwork}\n`);
 
 	// rename each item in tree to a detailed inline
 	function renamer(pkg){
