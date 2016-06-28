@@ -17,9 +17,9 @@ const argv = require('yargs')
 	})
 	.option('time', {
 		describe: 'Time the query',
-		default: false
+		default: false,
+		type: 'boolean'
 	})
-	.boolean('time')
 	.help('h')
 	.alias('h', 'help')
 	.argv;
