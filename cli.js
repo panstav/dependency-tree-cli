@@ -21,6 +21,12 @@ const argv = require('yargs')
 		default: false,
 		type: 'boolean'
 	})
+	.option('dry', {
+		alias: 'd',
+		describe: 'Dry Run, won\'t print the tree',
+		default: false,
+		type: 'boolean'
+	})
 	.help('h')
 	.alias('h', 'help')
 	.argv;
@@ -42,8 +48,8 @@ function print(tree){
 	loader.stop().clear();
 
 	// print the tree of dependencies
-	console.log(topiary(tree, 'deps', { name: renamer }));
-
+	if (!argv.dry) console.log(topiary(tree, 'deps', { name: renamer }));
+	
 	if (argv.timer) console.log('Entire query', timer.end());
 
 	// rename each item in tree to a detailed inline
