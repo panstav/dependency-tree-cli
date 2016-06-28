@@ -8,7 +8,6 @@ const Time = require('time-diff');
 const timer = new Time();
 
 const getTree = require('@panstav/dependency-tree');
-const strategies = getTree.strategies;
 
 const argv = require('yargs')
 	.usage('Usage: $0 <npm-package-name> [options]')
@@ -21,7 +20,7 @@ const argv = require('yargs')
 	.option('strategy', {
 		alias: 's',
 		describe: 'Choose a strategy for handling queried dependencies',
-		choices: strategies,
+		choices: getTree.strategies,
 		default: 'cache_after_iteration'
 	})
 	.option('timer', {
