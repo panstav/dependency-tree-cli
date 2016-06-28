@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const util = require('util');
+
 const topiary = require('topiary');
 const ora = require('ora');
 const Time = require('time-diff');
@@ -18,6 +20,12 @@ const argv = require('yargs')
 	.option('timer', {
 		alias: 't',
 		describe: 'Time the query',
+		default: false,
+		type: 'boolean'
+	})
+	.option('json', {
+		alias: 'j',
+		describe: 'JSON output',
 		default: false,
 		type: 'boolean'
 	})
@@ -48,7 +56,10 @@ function print(tree){
 	loader.stop().clear();
 
 	// print the tree of dependencies
-	if (!argv.dry) console.log(topiary(tree, 'deps', { name: renamer }));
+	if (!argv.dry){
+		const output = argv.json ? util.inspect(tree, false, null) : topiary(tree, 'deps', { name: renamer });
+		console.log(output);
+	}
 	
 	if (argv.timer) console.log('Entire query', timer.end());
 
