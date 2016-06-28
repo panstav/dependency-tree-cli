@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/panstav/dependency-tree-cli#readme",
   "dependencies": {
-    "@panstav/dependency-tree": "0.0.1",
+    "@panstav/dependency-tree": "0.1.1",
     "ora": "0.2.3",
     "time-diff": "0.3.1",
     "topiary": "1.1.2",

@@ -8,6 +8,7 @@ const Time = require('time-diff');
 const timer = new Time();
 
 const getTree = require('@panstav/dependency-tree');
+const strategies = getTree.strategies;
 
 const argv = require('yargs')
 	.usage('Usage: $0 <npm-package-name> [options]')
@@ -16,6 +17,12 @@ const argv = require('yargs')
 		alias: 'v',
 		describe: 'Choose the package semver',
 		default: 'latest'
+	})
+	.option('strategy', {
+		alias: 's',
+		describe: 'Choose a strategy for handling queried dependencies',
+		choices: strategies,
+		default: 'cache_after_iteration'
 	})
 	.option('timer', {
 		alias: 't',
@@ -46,7 +53,7 @@ const loader = ora({ spinner: 'dots7', text: 'Loading dependency tree' }).start(
 if (argv.timer) timer.start();
 
 // query for tree with given/default options and print results/errors
-getTree({ name: argv._[0], version: argv.version })
+getTree({ name: argv._[0], version: argv.version, options: { strategy: argv.strategy } })
 	.then(print)
 	.catch(console.error);
 
