@@ -43,4 +43,7 @@ const argv = require('yargs')
 
 compute(argv)
 	.then(print)
-	.catch(console.error);
+	.catch(err => {
+		console.error(err);
+		console.log(err.stack);
+	});
