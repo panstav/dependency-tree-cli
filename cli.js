@@ -13,6 +13,12 @@ const argv = require('yargs')
 		describe: 'Choose the package semver',
 		default: 'latest'
 	})
+	.option('check', {
+		alias: 'c',
+		describe: 'Scan for vulnerability @ Snyk/vulndb',
+		default: false,
+		type: 'boolean'
+	})
 	.option('strategy', {
 		alias: 's',
 		describe: 'Choose a strategy for handling queried dependencies',
