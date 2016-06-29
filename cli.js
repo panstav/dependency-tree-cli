@@ -45,6 +45,7 @@ const argv = require('yargs')
 	})
 	.help('h')
 	.alias('h', 'help')
+	.wrap()
 	.argv;
 
 compute(argv)
