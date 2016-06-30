@@ -7,6 +7,7 @@
 * Traverse to where you're comfortable with `$ cd /path/to/my/comfort/zone`
 * `$ git clone https://github.com/panstav/dependency-tree-cli.git`
 * `$ cd dependency-tree-cli`
+* `$ npm install`
 * Optionally you may want to link it for global use with `$ npm link`
 
 ## Usage
