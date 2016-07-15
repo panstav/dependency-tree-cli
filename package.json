@@ -14,7 +14,11 @@
     "npm-tree": "cli.js"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Stav Geffen",
+    "email": "stavgeffen@gmail.com",
+    "url": "http://www.stav.io"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/panstav/dependency-tree-cli/issues"
